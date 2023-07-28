@@ -8,7 +8,11 @@ import           Data.ByteString                (ByteString)
 import qualified Data.Text                      as T
 
 #if MIN_VERSION_text(2,0,0)
+#if MIN_VERSION_GLASGOW_HASKELL(9,8,0,0) && !MIN_VERSION_GLASGOW_HASKELL(9,9,0,0)
+import           Data.Array.Byte (ByteArray (..))
+#else
 import           Data.Text.Array                (Array (..))
+#endif
 import qualified Data.Text.Internal             as T (Text (..))
 
 import qualified Data.ByteString.Short.Internal as SBS
